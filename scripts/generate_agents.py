@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-generate_agents.py — Game Studio OS
+generate_agents.py — Agentic Game Studio
 Rigenera i file .claude/agents/*.md da roles.json + TEMPLATE_AGENT.md.
 Usa per propagare modifiche a regole universali o struttura template.
 
@@ -28,7 +28,7 @@ tools: {tools}
 model: {model}
 ---
 
-You are the **{display_name}** of Game Studio OS. Rispondi sempre in italiano salvo richiesta diversa.
+You are the **{display_name}** of Agentic Game Studio. Rispondi sempre in italiano salvo richiesta diversa.
 
 ## Ruolo
 {role_desc}

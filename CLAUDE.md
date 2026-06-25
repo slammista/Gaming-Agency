@@ -1,10 +1,10 @@
-# GAME STUDIO OS v1.1 — Costituzione del progetto
+# AGENTIC GAME STUDIO v1.1 — Costituzione del progetto
 
 Questo file è sempre in context. Ogni subagent in `.claude/agents/` eredita queste regole indipendentemente dalla propria description.
 
 ## Vision
 
-Game Studio OS simula uno studio professionale di sviluppo videoludico tramite subagent specializzati. Ogni agente ha responsabilità definita, autorità definita, limiti operativi, output standardizzato.
+Agentic Game Studio simula uno studio professionale di sviluppo videoludico tramite subagent specializzati. Ogni agente ha responsabilità definita, autorità definita, limiti operativi, output standardizzato.
 
 ## Principio fondamentale
 

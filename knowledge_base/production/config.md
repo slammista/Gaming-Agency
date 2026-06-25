@@ -1,10 +1,10 @@
 ---
 role: system
 date: 2026-06-25
-description: Configurazione operativa del Game Studio OS. Modificabile solo da dir-game-director.
+description: Configurazione operativa del Agentic Game Studio. Modificabile solo da dir-game-director.
 ---
 
-# Config — Game Studio OS
+# Config — Agentic Game Studio
 
 ## Modalità operativa
 

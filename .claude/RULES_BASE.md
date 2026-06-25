@@ -1,4 +1,4 @@
-# Regole universali — Game Studio OS v1.0
+# Regole universali — Agentic Game Studio v1.0
 
 Ereditate da **tutti** gli agenti in `.claude/agents/`. Ogni file agente sostituisce le 5 regole duplicate con `Eredita .claude/RULES_BASE.md`.
 

@@ -1,4 +1,4 @@
-# 🎮 Game Studio OS
+# 🎮 Agentic Game Studio
 
 > **Trasforma Claude Code nel tuo studio AAA di sviluppo videoludico.**
 > 53 agenti specializzati. Una Knowledge Base condivisa. Pipeline di produzione completa.
@@ -12,7 +12,7 @@
 
 ## Cos'è
 
-Game Studio OS replica la struttura di uno **studio professionale AAA** direttamente in Claude Code. Ogni membro del team — dal Game Director al Dialogue Writer, dal Concept Artist al QA Lead — è un agente autonomo con ruolo definito, autorità precisa e accesso limitato alla Knowledge Base.
+Agentic Game Studio replica la struttura di uno **studio professionale AAA** direttamente in Claude Code. Ogni membro del team — dal Game Director al Dialogue Writer, dal Concept Artist al QA Lead — è un agente autonomo con ruolo definito, autorità precisa e accesso limitato alla Knowledge Base.
 
 Non è un chatbot a cui chiedere idee. È un **sistema di produzione**: i contenuti vengono creati, validati dal QA, approvati dal Director e salvati nella Knowledge Base in Markdown pronto all'uso.
 
@@ -24,7 +24,7 @@ Non è un chatbot a cui chiedere idee. È un **sistema di produzione**: i conten
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
-│                        🎮 GAME STUDIO OS                        │
+│                        🎮 AGENTIC GAME STUDIO                        │
 │                                                                 │
 │                    👤 UTENTE (tu)                               │
 │                         │                                       │
@@ -239,7 +239,7 @@ Al primo avvio si apre automaticamente il browser su `claude.ai`. Accedi, autori
 
 #### Opzione A — Template GitHub (consigliato, per chi parte da zero)
 
-Vai su [github.com/slammista/Gaming-Agency](https://github.com/slammista/Gaming-Agency), clicca **"Use this template" → "Create a new repository"** e crea la tua copia personale.
+Vai su [github.com/slammista/agentic-game-studio](https://github.com/slammista/agentic-game-studio), clicca **"Use this template" → "Create a new repository"** e crea la tua copia personale.
 
 Poi clona la tua repo:
 
@@ -254,25 +254,25 @@ Se hai già una repo con il tuo gioco, copia solo i file del sistema:
 
 ```bash
 # Clona temporaneamente questa repo
-git clone https://github.com/slammista/Gaming-Agency.git /tmp/game-studio-os
+git clone https://github.com/slammista/agentic-game-studio.git /tmp/agentic-game-studio
 
 # Entra nella TUA cartella di progetto
 cd /path/al/tuo/progetto
 
 # Copia i file del sistema
-cp -r /tmp/game-studio-os/.claude .
-cp    /tmp/game-studio-os/CLAUDE.md .
-cp -r /tmp/game-studio-os/knowledge_base .
-cp -r /tmp/game-studio-os/logs .
-cp    /tmp/game-studio-os/roles.json .
-cp -r /tmp/game-studio-os/scripts .
+cp -r /tmp/agentic-game-studio/.claude .
+cp    /tmp/agentic-game-studio/CLAUDE.md .
+cp -r /tmp/agentic-game-studio/knowledge_base .
+cp -r /tmp/agentic-game-studio/logs .
+cp    /tmp/agentic-game-studio/roles.json .
+cp -r /tmp/agentic-game-studio/scripts .
 
 # Rimuovi la repo temporanea
-rm -rf /tmp/game-studio-os
+rm -rf /tmp/agentic-game-studio
 
 # Committa nel tuo progetto
 git add .
-git commit -m "Add Game Studio OS multi-agent system"
+git commit -m "Add Agentic Game Studio multi-agent system"
 git push
 ```
 

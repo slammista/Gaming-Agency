@@ -1,4 +1,4 @@
-# Transaction Log — Game Studio OS
+# Transaction Log — Agentic Game Studio
 
 Log unificato di tutte le modifiche alla Knowledge Base. Sostituisce i 49 file `logs/<agente>.md`.
 
@@ -13,4 +13,4 @@ Log unificato di tutte le modifiche alla Knowledge Base. Sostituisce i 49 file `
 
 | Timestamp | Agente | Azione | File | Motivo | Stato |
 |---|---|---|---|---|---|
-| 2026-06-25T15:37:00 | system | CREATE | knowledge_base/* | Init Game Studio OS multi-agent system | committed |
+| 2026-06-25T15:37:00 | system | CREATE | knowledge_base/* | Init Agentic Game Studio multi-agent system | committed |
