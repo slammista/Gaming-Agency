@@ -32,35 +32,146 @@ Utente → Game Director → Orchestratori di macroarea → Specialist → KB �
 
 ---
 
-## Setup consigliato: Claude Code IDE o Terminale
+## Installazione e setup — Guida completa per principianti
 
-> **Raccomandato:** usa Claude Code nel **terminale** o nell'**estensione IDE** (VS Code / JetBrains).  
-> Il motivo è semplice: lì hai pieno controllo sul contesto, puoi lavorare nella cartella del progetto e gli agenti accedono direttamente ai file della Knowledge Base senza intermediari.
+> **Metodo consigliato: Claude Code nel terminale o nell'IDE.**
+> Rispetto alla versione web, hai sessioni persistenti, accesso diretto ai file della KB e nessuna latenza di sync. Gli agenti funzionano meglio quando possono leggere e scrivere file localmente in tempo reale.
 
-### 1. Clona il repo
+---
+
+### Prerequisiti
+
+Prima di iniziare, assicurati di avere:
+
+- **Node.js 18 o superiore** — verifica con `node --version`. Se non ce l'hai, scaricalo da [nodejs.org](https://nodejs.org).
+- **Git** — verifica con `git --version`. Di solito è già installato su Mac e Linux. Su Windows usa [git-scm.com](https://git-scm.com).
+- **Un account Anthropic** con piano **Pro, Max o Team** (gli agenti usano Sonnet e Haiku, non disponibili sul piano Free).
+
+---
+
+### Passo 1 — Installa Claude Code
+
+Apri il terminale ed esegui:
+
+```bash
+npm install -g @anthropic-ai/claude-code
+```
+
+Verifica che l'installazione sia andata a buon fine:
+
+```bash
+claude --version
+```
+
+Dovresti vedere un numero di versione (es. `1.x.x`). Se il comando non viene trovato, chiudi e riapri il terminale.
+
+---
+
+### Passo 2 — Autenticati con il tuo account Anthropic
+
+```bash
+claude
+```
+
+Al primo avvio Claude Code ti chiederà di autenticarti. Segui le istruzioni a schermo:
+
+1. Verrà aperta automaticamente una pagina nel browser su `claude.ai`
+2. Accedi con il tuo account Anthropic
+3. Autorizza Claude Code
+4. Torna al terminale — vedrai il prompt `>` che indica che sei pronto
+
+> Se preferisci autenticarti con una API Key invece del browser:
+> ```bash
+> export ANTHROPIC_API_KEY=sk-ant-...
+> claude
+> ```
+
+---
+
+### Passo 3 — Clona la repository
+
+In una nuova finestra del terminale (o digita `/exit` per uscire da Claude Code prima):
 
 ```bash
 git clone https://github.com/slammista/Gaming-Agency.git
 cd Gaming-Agency
 ```
 
-### 2. Avvia Claude Code nella cartella
+Verifica che la cartella contenga i file giusti:
+
+```bash
+ls -la
+```
+
+Dovresti vedere: `.claude/`, `CLAUDE.md`, `README.md`, `knowledge_base/`, `logs/`, `roles.json`.
+
+---
+
+### Passo 4 — Avvia Claude Code nella cartella del progetto
 
 ```bash
 claude
 ```
 
-Claude legge automaticamente `CLAUDE.md` (la costituzione del progetto) e scopre tutti i 53 agenti in `.claude/agents/`. Nessuna configurazione aggiuntiva richiesta.
+**Importante:** il comando va eseguito **dentro** la cartella `Gaming-Agency`. Claude Code legge automaticamente:
 
-### 3. In alternativa: Claude Code Web
+- `CLAUDE.md` — la costituzione del progetto (regole, architettura, modalità operativa)
+- `.claude/agents/*.md` — tutti i 53 agenti specializzati
+- `.claude/RULES_BASE.md` — le regole universali ereditate da tutti gli agenti
 
-Se non hai Claude Code in locale, puoi usare [claude.ai/code](https://claude.ai/code) (richiede piano Pro, Max o Team):
+Non devi fare nulla di speciale: basta avviare `claude` nella cartella giusta e il sistema è operativo.
 
-1. Connetti il tuo account GitHub
-2. Seleziona la repository `Gaming-Agency`
-3. Claude carica automaticamente gli agenti dalla repo
+---
 
-> L'IDE/terminale rimane la scelta preferita perché garantisce sessioni persistenti, accesso diretto al filesystem e nessuna latenza di sync con GitHub.
+### Passo 5 — Verifica che gli agenti siano caricati
+
+Una volta dentro Claude Code, digita:
+
+```
+/agents
+```
+
+Vedrai la lista di tutti gli agenti disponibili con la loro descrizione. Se vedi i 53 agenti (da `biz-community-manager` a `viz-vfx-artist`) il setup è completo.
+
+> Se non vedi gli agenti, assicurati di aver avviato `claude` dalla cartella `Gaming-Agency` e non da un'altra directory.
+
+---
+
+### Passo 6 — Prima sessione: inizia con il Game Director
+
+Per un nuovo progetto, il punto di ingresso consigliato è sempre il Game Director:
+
+```
+Sono in fase di pre-produzione. Voglio creare un gioco di ruolo fantasy dark.
+Chiedi al Game Director di avviare il progetto e definire la visione creativa.
+```
+
+Il Game Director leggerà `knowledge_base/production/session_manifest.md` per capire lo stato del progetto (vuoto la prima volta), e potrà iniziare a delegare agli orchestratori di macroarea.
+
+---
+
+### Setup opzionale: estensione VS Code
+
+Se preferisci lavorare nell'IDE invece del terminale:
+
+1. Apri VS Code
+2. Vai su **Extensions** (`Ctrl+Shift+X` / `Cmd+Shift+X`)
+3. Cerca **"Claude Code"** e installa l'estensione Anthropic
+4. Apri la cartella `Gaming-Agency` in VS Code (`File → Open Folder`)
+5. Usa il pannello Claude Code nella sidebar — stesso comportamento del terminale
+
+---
+
+### Setup alternativo: Claude Code Web (senza installazione)
+
+Se non vuoi installare nulla in locale, puoi usare [claude.ai/code](https://claude.ai/code) (richiede piano Pro, Max o Team):
+
+1. Vai su [claude.ai/code](https://claude.ai/code) e accedi
+2. Clicca **"Connect GitHub"** e autorizza l'accesso
+3. Seleziona la repository `slammista/Gaming-Agency`
+4. Claude carica automaticamente gli agenti dalla repo
+
+> Limitazione: le sessioni web si chiudono dopo un periodo di inattività. Per progetti lunghi con tanta KB da costruire, il terminale è più stabile.
 
 ---
 
