@@ -21,8 +21,13 @@ Aggiorna questo file ogni volta che crei una nuova entità. Ogni agente legge SO
 | production/ | GDD, roadmap, market analysis, decisioni | dir-* |
 | marketing/ | strategia, store, press kit, community | biz-* |
 | live_ops/ | metriche, eventi, feedback, supporto | biz-* |
-| qa_reports/ | piano test, bug, report narrativi/UX | qa-* |
+| qa_reports/ | piano test, bug, report narrativi/UX, cross-domain | qa-*, qa-cross-domain |
+| staging/ | output DRY-RUN non ancora approvati | tutti (solo in modalità DRY-RUN) |
+| i18n/ | traduzioni per lingue attive + glossari multi-lingua | biz-localization-manager |
+| production/config.md | modalità operativa (PROD/DRY-RUN) e impostazioni globali | dir-game-director |
+| production/pending_approval.md | coda batch approval per dir-game-director | orchestratori dir-* |
+| production/session_manifest.md | checkpointing sessione, context per avvio | kb-librarian |
 
 ## Voci attuali
 
-_(vuoto — popola man mano che crei contenuto. Formato riga: `- [nome entità](percorso/file.md) — breve descrizione — stato)`)_
+_(vuoto — kb-librarian aggiorna questa sezione automaticamente. Formato: `| [nome](percorso) | agente | data | stato |`)_

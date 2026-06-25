@@ -1,4 +1,4 @@
-# GAME STUDIO OS v1.0 — Costituzione del progetto
+# GAME STUDIO OS v1.1 — Costituzione del progetto
 
 Questo file è sempre in context. Ogni subagent in `.claude/agents/` eredita queste regole indipendentemente dalla propria description.
 
@@ -40,8 +40,9 @@ Uno specialist NON dispatcha direttamente un altro specialist di pari livello. Q
 | Narrativa | `dir-narrative-director` | narrative designer, lore designer/writer, dialogue writer, character writer, content writer, narrative technical designer |
 | Visual/Audio | `dir-art-director` | concept artist, 3D character/environment artist, texture artist, rigger, animator, UI/UX artist, VFX artist, technical artist, sound designer, composer |
 | Programmazione | `dir-technical-director` | lead/gameplay/UI/AI/tools/audio programmer — **STUB, vedi sotto** |
-| QA | `qa-lead` (gate trasversale) | QA tester, narrative QA, UX researcher |
-| Business/Lancio | `dir-producer` | marketing manager, video editor, PR manager, community manager, data analyst, live ops producer, customer support |
+| QA | `qa-lead` (gate trasversale) | QA tester, narrative QA, UX researcher, **qa-cross-domain**, **qa-security-guard** |
+| Business/Lancio | `dir-producer` | marketing manager, video editor, PR manager, community manager, data analyst, live ops producer, customer support, **biz-localization-manager** |
+| Infrastruttura KB | — (trasversale) | **kb-librarian** (auto-index, session manifest) |
 
 ## Stato macroarea Programmazione: STUB
 
@@ -49,7 +50,9 @@ Gli agenti `prog-*` esistono come file ma sono **inattivi by design**. Senza una
 
 ## Knowledge Base — strategia di retrieval
 
-**Nessun agente legge l'intera KB.** Ogni agente legge solo le sottocartelle elencate nel proprio file (`can_modify` + le cartelle in lettura indicate). Indice di navigazione: `knowledge_base/INDEX.md` (mantenuto manualmente, aggiorna quando crei nuove entità).
+**Nessun agente legge l'intera KB.** Ogni agente legge solo le sottocartelle elencate nel proprio file (`can_modify` + le cartelle in lettura indicate). Indice di navigazione: `knowledge_base/INDEX.md` (aggiornato automaticamente da `kb-librarian`).
+
+**Avvio sessione:** `dir-game-director` legge `knowledge_base/production/session_manifest.md` (~300 token) invece di fare Glob su tutta la KB.
 
 Struttura:
 ```
@@ -59,20 +62,34 @@ knowledge_base/
 ├── narrative/ dialogue/ lore/
 ├── quests/ systems/ levels/
 ├── art_direction/ assets_visual/ assets_audio/
-├── production/ marketing/ live_ops/
-└── qa_reports/
+├── production/          ← config.md · pending_approval.md · session_manifest.md
+├── marketing/ live_ops/
+├── qa_reports/
+├── staging/             ← output DRY-RUN (mai approvato direttamente)
+└── i18n/                ← traduzioni per biz-localization-manager
 ```
 
 ## Regole assolute
 
-1. Nessun agente modifica dati fuori dalla propria autorità (campo `can_modify` nel proprio file).
+Le regole complete sono in `.claude/RULES_BASE.md` (ereditate da tutti gli agenti). Sintesi:
+
+1. Nessun agente modifica dati fuori dalla propria autorità (`can_modify`).
 2. Nessun agente ignora la Knowledge Base.
-3. Ogni modifica va registrata in `logs/` (file `YYYY-MM-DD_<agente>.md`, una riga per modifica: cosa, dove, perché).
-4. Ogni contenuto nuovo passa per `qa-lead` prima dell'approvazione di `dir-game-director`.
-5. Uno specialist non dispatcha un altro specialist di pari livello — passa dal proprio orchestratore di macroarea (vedi sopra).
+3. **Log unificato** — ogni modifica in `logs/TRANSACTION_LOG.md` (non più file separati per agente).
+4. Ogni contenuto nuovo passa per `qa-lead` → `qa-cross-domain` → `dir-game-director` (batch approval via `pending_approval.md`).
+5. Uno specialist non dispatcha un altro specialist di pari livello.
 6. La coerenza del progetto ha priorità sulla creatività.
-7. Nessun agente introduce nuove regole di sistema senza il via libera di `dir-game-director`.
-8. Ogni output è strutturato, in Markdown, salvabile direttamente nella Knowledge Base — niente prosa libera non categorizzata.
+7. Nessun agente introduce nuove regole senza il via libera di `dir-game-director`.
+8. Ogni output è strutturato in Markdown — niente prosa libera non categorizzata.
+9. **File locking** — controlla `locked_by` nel frontmatter prima di ogni Write/Edit.
+10. **Dry-run** — rispetta `mode` in `knowledge_base/production/config.md`.
+
+## Modalità operativa
+
+- **PROD** (default): scrittura diretta su KB
+- **DRY-RUN**: output in `knowledge_base/staging/` — nessun tocco alla KB ufficiale
+
+Cambia `mode` in `knowledge_base/production/config.md`.
 
 ## Ottimizzazione token (vincolo di progetto)
 

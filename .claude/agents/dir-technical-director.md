@@ -29,12 +29,7 @@ Direzione — orchestratore: `dir-game-director`
 - Formato: Markdown strutturato con frontmatter YAML (`role: dir-technical-director`, `date`, `status: draft|review|approved`, `depends_on: [...]`)
 - Conciso: niente ripetizione di contesto già presente nella Knowledge Base, niente preamboli
 
-## Regole (da CLAUDE.md, sempre vincolanti)
-1. Non ignori la Knowledge Base — leggi solo le cartelle pertinenti alla tua autorità prima di scrivere.
-2. Non modifichi nulla fuori da "Autorità" sopra.
-3. Registra ogni modifica in `logs/dir-technical-director.md` (una riga: data, file toccato, motivo).
-4. Il tuo output passa per `qa-lead` prima dell'approvazione di `dir-game-director`.
-5. Se ti serve l'output di un altro specialist, segnala la dipendenza al tuo orchestratore di macroarea — non dispacci tu stesso un altro specialist di pari livello.
-
+## Regole
+Eredita `.claude/RULES_BASE.md`. Nessuna aggiunta specifica.
 ## Nota STUB
 Questo agente e tutti i `prog-*` sono inattivi by design finché non esiste un repository di codice. Senza una codebase reale produrrebbero solo pseudocodice decorativo. All'attivazione: aggiorna `tools` con accesso reale al codice e `model` a `sonnet`.

@@ -1,0 +1,524 @@
+[
+  {
+    "name": "biz-community-manager",
+    "description": "Usa questo agente per community management, beta testing pubblico o raccolta feedback utenti.",
+    "tools": "Read, Write, Edit, Grep, Glob",
+    "model": "sonnet",
+    "parent": "dir-producer",
+    "can_modify": [
+      "knowledge_base/marketing/community.md",
+      "knowledge_base/live_ops/feedback_log.md"
+    ]
+  },
+  {
+    "name": "biz-customer-support-specialist",
+    "description": "Usa questo agente per supporto utenti e gestione richieste ricorrenti — compito standardizzato.",
+    "tools": "Read, Write, Grep, Glob",
+    "model": "haiku",
+    "parent": "dir-producer",
+    "can_modify": [
+      "knowledge_base/live_ops/support_log.md"
+    ]
+  },
+  {
+    "name": "biz-data-analyst",
+    "description": "Usa questo agente per analisi quantitativa di metriche e KPI.",
+    "tools": "Read, Write, Edit, Grep, Glob",
+    "model": "sonnet",
+    "parent": "dir-producer",
+    "can_modify": [
+      "knowledge_base/live_ops/metrics.md"
+    ]
+  },
+  {
+    "name": "biz-live-ops-producer",
+    "description": "Usa questo agente per pianificare eventi live post-lancio.",
+    "tools": "Read, Write, Edit, Grep, Glob",
+    "model": "sonnet",
+    "parent": "dir-producer",
+    "can_modify": [
+      "knowledge_base/live_ops/events.md"
+    ]
+  },
+  {
+    "name": "biz-localization-manager",
+    "description": "Usa questo agente per tradurre asset già approvati in altre lingue o per gestire glossari multi-lingua. Attivalo solo su contenuto con status approved.",
+    "tools": "Read, Write, Edit, Grep, Glob",
+    "model": "sonnet",
+    "parent": "dir-producer",
+    "can_modify": []
+  },
+  {
+    "name": "biz-marketing-manager",
+    "description": "Usa questo agente per strategia marketing o copy della pagina Steam/Store.",
+    "tools": "Read, Write, Edit, Grep, Glob, WebSearch",
+    "model": "sonnet",
+    "parent": "dir-producer",
+    "can_modify": [
+      "knowledge_base/marketing/strategy.md",
+      "knowledge_base/marketing/store_page.md"
+    ]
+  },
+  {
+    "name": "biz-pr-manager",
+    "description": "Usa questo agente per press kit o contatti con stampa e creator.",
+    "tools": "Read, Write, Edit, Grep, Glob",
+    "model": "sonnet",
+    "parent": "dir-producer",
+    "can_modify": [
+      "knowledge_base/marketing/press_kit.md",
+      "knowledge_base/marketing/press_contacts.md"
+    ]
+  },
+  {
+    "name": "biz-video-editor-marketing-artist",
+    "description": "Usa questo agente per trailer e video promozionali.",
+    "tools": "Read, Write, Edit, Grep, Glob",
+    "model": "sonnet",
+    "parent": "dir-producer",
+    "can_modify": [
+      "knowledge_base/marketing/video_assets.md"
+    ]
+  },
+  {
+    "name": "design-character-designer",
+    "description": "Usa questo agente per il design funzionale/meccanico di un personaggio (statistiche, ruolo gameplay) — non per backstory o dialoghi.",
+    "tools": "Read, Write, Edit, Grep, Glob",
+    "model": "sonnet",
+    "parent": "dir-lead-game-designer",
+    "can_modify": [
+      "knowledge_base/characters/<character>_design.md"
+    ]
+  },
+  {
+    "name": "design-encounter-designer",
+    "description": "Usa questo agente per progettare incontri, eventi scriptati o boss fight.",
+    "tools": "Read, Write, Edit, Grep, Glob",
+    "model": "sonnet",
+    "parent": "dir-lead-game-designer",
+    "can_modify": [
+      "knowledge_base/levels/encounters/"
+    ]
+  },
+  {
+    "name": "design-game-designer",
+    "description": "Usa questo agente per progettare meccaniche di gioco o definire/modificare il core loop.",
+    "tools": "Read, Write, Edit, Grep, Glob",
+    "model": "sonnet",
+    "parent": "dir-lead-game-designer",
+    "can_modify": [
+      "knowledge_base/systems/mechanics.md",
+      "knowledge_base/systems/core_loop.md"
+    ]
+  },
+  {
+    "name": "design-level-designer",
+    "description": "Usa questo agente per layout di livello, blockout/greyboxing, punti di interesse, dungeon o percorsi.",
+    "tools": "Read, Write, Edit, Grep, Glob",
+    "model": "sonnet",
+    "parent": "dir-lead-game-designer",
+    "can_modify": [
+      "knowledge_base/levels/"
+    ]
+  },
+  {
+    "name": "design-quest-designer",
+    "description": "Usa questo agente per progettare missioni principali, secondarie, eventi con ramificazioni, o nuovi contenuti quest post-lancio.",
+    "tools": "Read, Write, Edit, Grep, Glob",
+    "model": "sonnet",
+    "parent": "dir-lead-game-designer",
+    "can_modify": [
+      "knowledge_base/quests/"
+    ]
+  },
+  {
+    "name": "design-systems-designer",
+    "description": "Usa questo agente per sistemi economici, progressione, reputazione, crafting, statistiche, o qualsiasi bilanciamento di gameplay/economia.",
+    "tools": "Read, Write, Edit, Grep, Glob",
+    "model": "sonnet",
+    "parent": "dir-lead-game-designer",
+    "can_modify": [
+      "knowledge_base/systems/"
+    ]
+  },
+  {
+    "name": "design-world-designer",
+    "description": "Usa questo agente per creare o modificare continenti, regioni, città, fazioni, religioni o geografia del mondo di gioco.",
+    "tools": "Read, Write, Edit, Grep, Glob",
+    "model": "sonnet",
+    "parent": "dir-lead-game-designer",
+    "can_modify": [
+      "knowledge_base/world/",
+      "knowledge_base/regions/",
+      "knowledge_base/factions/"
+    ]
+  },
+  {
+    "name": "dir-art-director",
+    "description": "Usa questo agente per stile visivo/audio, mood, palette, o quando un task richiede di dispacciare uno specialist visual/audio (concept art, modellazione 3D, texturing, rigging, animazione, UI, VFX, sound design, composizione).",
+    "tools": "Read, Write, Edit, Grep, Glob, Task",
+    "model": "sonnet",
+    "parent": "dir-game-director",
+    "can_modify": [
+      "knowledge_base/art_direction/style_guide.md"
+    ]
+  },
+  {
+    "name": "dir-game-director",
+    "description": "Usa questo agente per approvazione finale di contenuti già validati da QA, arbitraggio tra macroaree in conflitto, o definizione della visione creativa generale del progetto.",
+    "tools": "Read, Grep, Glob, Write, Task, WebSearch",
+    "model": "sonnet",
+    "parent": "—  (root)",
+    "can_modify": [
+      "knowledge_base/production/decisions_log.md",
+      "knowledge_base/production/pending_approval.md (solo per aggiornare `status` degli asset in coda)"
+    ]
+  },
+  {
+    "name": "dir-lead-game-designer",
+    "description": "Usa questo agente per il Game Design Document, o quando un task richiede di dispacciare uno specialist di design (world, game, systems, quest, character designer, level designer, encounter designer).",
+    "tools": "Read, Write, Edit, Grep, Glob, Task",
+    "model": "sonnet",
+    "parent": "dir-game-director",
+    "can_modify": [
+      "knowledge_base/production/gdd.md"
+    ]
+  },
+  {
+    "name": "dir-narrative-director",
+    "description": "Usa questo agente per controllo coerenza narrativa, o quando un task richiede di dispacciare uno specialist narrativo (narrative designer, lore designer/writer, dialogue writer, character writer, content writer, narrative technical designer).",
+    "tools": "Read, Write, Edit, Grep, Glob, Task",
+    "model": "sonnet",
+    "parent": "dir-game-director",
+    "can_modify": [
+      "knowledge_base/narrative/coherence_report.md (livello review)"
+    ]
+  },
+  {
+    "name": "dir-producer",
+    "description": "Usa questo agente per analisi di mercato/target, coordinamento produzione, o quando un task richiede di dispacciare uno specialist business/lancio (marketing, PR, community, data, live ops, supporto).",
+    "tools": "Read, Write, Edit, Grep, Glob, Task, WebSearch",
+    "model": "sonnet",
+    "parent": "dir-game-director",
+    "can_modify": [
+      "knowledge_base/production/market_analysis.md",
+      "knowledge_base/marketing/"
+    ]
+  },
+  {
+    "name": "dir-project-manager",
+    "description": "Usa questo agente per pianificazione milestone, roadmap, scadenze e tracking calendario — non per decisioni creative.",
+    "tools": "Read, Write, Grep, Glob",
+    "model": "sonnet",
+    "parent": "dir-game-director",
+    "can_modify": [
+      "knowledge_base/production/roadmap.md",
+      "knowledge_base/production/milestones.md"
+    ]
+  },
+  {
+    "name": "dir-technical-director",
+    "description": "Usa questo agente solo quando esiste già una codebase di progetto e serve tradurre design in requisiti tecnici o dispacciare un programmer. Senza codebase reale, NON attivare.",
+    "tools": "Read, Write, Grep, Glob, Task",
+    "model": "haiku",
+    "parent": "dir-game-director",
+    "can_modify": [
+      "knowledge_base/production/implementation_spec.md"
+    ]
+  },
+  {
+    "name": "kb-librarian",
+    "description": "Usa questo agente per aggiornare automaticamente l'indice della Knowledge Base dopo che altri agenti hanno creato o modificato file. Invocalo al termine di ogni sessione produttiva o su richiesta.",
+    "tools": "Read, Glob, Write, Edit",
+    "model": "haiku",
+    "parent": "—",
+    "can_modify": []
+  },
+  {
+    "name": "narr-character-writer",
+    "description": "Usa questo agente per backstory, personalità, archi narrativi personali o relazioni tra personaggi.",
+    "tools": "Read, Write, Edit, Grep, Glob",
+    "model": "sonnet",
+    "parent": "dir-narrative-director",
+    "can_modify": [
+      "knowledge_base/characters/<character>_narrative.md"
+    ]
+  },
+  {
+    "name": "narr-content-writer",
+    "description": "Usa questo agente per scrivere libri, documenti collezionabili o note ambientali in-game.",
+    "tools": "Read, Write, Edit, Grep, Glob",
+    "model": "sonnet",
+    "parent": "dir-narrative-director",
+    "can_modify": [
+      "knowledge_base/lore/in_world_documents/"
+    ]
+  },
+  {
+    "name": "narr-dialogue-writer",
+    "description": "Usa questo agente per scrivere dialoghi tra giocatore e NPC, incluse le ramificazioni di contenuto.",
+    "tools": "Read, Write, Edit, Grep, Glob",
+    "model": "sonnet",
+    "parent": "dir-narrative-director",
+    "can_modify": [
+      "knowledge_base/dialogue/<scene_id>.md"
+    ]
+  },
+  {
+    "name": "narr-lore-designer",
+    "description": "Usa questo agente per costruire cronologia storica o la struttura portante del lore — non per prosa di lore avanzata (quello è narr-lore-writer).",
+    "tools": "Read, Write, Edit, Grep, Glob",
+    "model": "sonnet",
+    "parent": "dir-narrative-director",
+    "can_modify": [
+      "knowledge_base/lore/timeline.md",
+      "knowledge_base/lore/lore_structure.md"
+    ]
+  },
+  {
+    "name": "narr-lore-writer",
+    "description": "Usa questo agente per scrivere lore avanzata e approfondita in prosa, basata sulla struttura già definita.",
+    "tools": "Read, Write, Edit, Grep, Glob",
+    "model": "sonnet",
+    "parent": "dir-narrative-director",
+    "can_modify": [
+      "knowledge_base/lore/entries/"
+    ]
+  },
+  {
+    "name": "narr-narrative-designer",
+    "description": "Usa questo agente per trama principale, archi narrativi, storyboard, pacing narrativo o finali multipli.",
+    "tools": "Read, Write, Edit, Grep, Glob",
+    "model": "sonnet",
+    "parent": "dir-narrative-director",
+    "can_modify": [
+      "knowledge_base/narrative/",
+      "knowledge_base/timeline/"
+    ]
+  },
+  {
+    "name": "narr-technical-designer",
+    "description": "Usa questo agente per implementazione tecnica di dialoghi nel motore, gestione variabili narrative o pipeline narrativa — non per il testo creativo dei dialoghi.",
+    "tools": "Read, Write, Edit, Grep, Glob",
+    "model": "sonnet",
+    "parent": "dir-narrative-director",
+    "can_modify": [
+      "knowledge_base/dialogue/implementation_spec.md",
+      "knowledge_base/narrative/variables.md"
+    ]
+  },
+  {
+    "name": "prog-ai-programmer",
+    "description": "NON attivare senza una codebase di progetto reale. Quando attivato: programmazione AI/NPC.",
+    "tools": "Read, Grep, Glob",
+    "model": "haiku",
+    "parent": "dir-technical-director",
+    "can_modify": []
+  },
+  {
+    "name": "prog-audio-programmer",
+    "description": "NON attivare senza una codebase di progetto reale. Quando attivato: programmazione audio a livello motore.",
+    "tools": "Read, Grep, Glob",
+    "model": "haiku",
+    "parent": "dir-technical-director",
+    "can_modify": []
+  },
+  {
+    "name": "prog-gameplay-programmer",
+    "description": "NON attivare senza una codebase di progetto reale. Quando attivato: programmazione gameplay.",
+    "tools": "Read, Grep, Glob",
+    "model": "haiku",
+    "parent": "dir-technical-director",
+    "can_modify": []
+  },
+  {
+    "name": "prog-lead-programmer",
+    "description": "NON attivare senza una codebase di progetto reale. Quando attivato: programmazione core di motore e sistemi.",
+    "tools": "Read, Grep, Glob",
+    "model": "haiku",
+    "parent": "dir-technical-director",
+    "can_modify": []
+  },
+  {
+    "name": "prog-tools-programmer",
+    "description": "NON attivare senza una codebase di progetto reale. Quando attivato: tools e pipeline di sviluppo.",
+    "tools": "Read, Grep, Glob",
+    "model": "haiku",
+    "parent": "dir-technical-director",
+    "can_modify": []
+  },
+  {
+    "name": "prog-ui-programmer",
+    "description": "NON attivare senza una codebase di progetto reale. Quando attivato: programmazione UI.",
+    "tools": "Read, Grep, Glob",
+    "model": "haiku",
+    "parent": "dir-technical-director",
+    "can_modify": []
+  },
+  {
+    "name": "qa-cross-domain",
+    "description": "Usa questo agente per verificare coerenza tra macroaree diverse prima di approvare contenuto complesso (es. nuova regione che impatta lore + quest + sistemi). Preventivo, non correttivo.",
+    "tools": "Read, Grep, Glob, Write",
+    "model": "sonnet",
+    "parent": "qa-lead",
+    "can_modify": []
+  },
+  {
+    "name": "qa-lead",
+    "description": "Usa questo agente per validare contenuto prima dell'approvazione finale, definire piani di test, o dispacciare qa-tester/qa-narrative/qa-ux-researcher.",
+    "tools": "Read, Grep, Glob, Write, Task",
+    "model": "sonnet",
+    "parent": "dir-game-director (gate trasversale)",
+    "can_modify": [
+      "knowledge_base/qa_reports/ (solo report)"
+    ]
+  },
+  {
+    "name": "qa-narrative",
+    "description": "Usa questo agente per testare coerenza narrativa, dialoghi e continuity error.",
+    "tools": "Read, Grep, Glob, Write",
+    "model": "haiku",
+    "parent": "qa-lead",
+    "can_modify": [
+      "knowledge_base/qa_reports/narrative_qa/"
+    ]
+  },
+  {
+    "name": "qa-security-guard",
+    "description": "Usa questo agente come pre-flight check prima di ogni Write/Edit su file della Knowledge Base. Verifica che l'agente richiedente abbia autorità sul path target e che il file non sia locked.",
+    "tools": "Read, Grep",
+    "model": "haiku",
+    "parent": "qa-lead",
+    "can_modify": []
+  },
+  {
+    "name": "qa-tester",
+    "description": "Usa questo agente per test funzionali, bug tracking o regressione — compito checklist-driven.",
+    "tools": "Read, Grep, Glob, Write",
+    "model": "haiku",
+    "parent": "qa-lead",
+    "can_modify": [
+      "knowledge_base/qa_reports/bugs/"
+    ]
+  },
+  {
+    "name": "qa-ux-researcher",
+    "description": "Usa questo agente per testare e interpretare l'esperienza utente (UX), non per checklist funzionali pure.",
+    "tools": "Read, Grep, Glob, Write",
+    "model": "sonnet",
+    "parent": "qa-lead",
+    "can_modify": [
+      "knowledge_base/qa_reports/ux/"
+    ]
+  },
+  {
+    "name": "viz-3d-character-artist",
+    "description": "Usa questo agente per modellazione 3D di personaggi.",
+    "tools": "Read, Write, Edit, Grep, Glob",
+    "model": "sonnet",
+    "parent": "dir-art-director",
+    "can_modify": [
+      "knowledge_base/assets_visual/3d_characters/"
+    ]
+  },
+  {
+    "name": "viz-3d-environment-artist",
+    "description": "Usa questo agente per modellazione 3D di ambienti.",
+    "tools": "Read, Write, Edit, Grep, Glob",
+    "model": "sonnet",
+    "parent": "dir-art-director",
+    "can_modify": [
+      "knowledge_base/assets_visual/3d_environments/"
+    ]
+  },
+  {
+    "name": "viz-animator",
+    "description": "Usa questo agente per animazione dei personaggi.",
+    "tools": "Read, Write, Edit, Grep, Glob",
+    "model": "sonnet",
+    "parent": "dir-art-director",
+    "can_modify": [
+      "knowledge_base/assets_visual/animation/"
+    ]
+  },
+  {
+    "name": "viz-composer",
+    "description": "Usa questo agente per composizione musicale del gioco.",
+    "tools": "Read, Write, Edit, Grep, Glob",
+    "model": "sonnet",
+    "parent": "dir-art-director",
+    "can_modify": [
+      "knowledge_base/assets_audio/music/"
+    ]
+  },
+  {
+    "name": "viz-concept-artist",
+    "description": "Usa questo agente per concept art di personaggi o ambienti.",
+    "tools": "Read, Write, Edit, Grep, Glob",
+    "model": "sonnet",
+    "parent": "dir-art-director",
+    "can_modify": [
+      "knowledge_base/assets_visual/concept/"
+    ]
+  },
+  {
+    "name": "viz-rigger",
+    "description": "Usa questo agente per il rigging dei personaggi.",
+    "tools": "Read, Write, Edit, Grep, Glob",
+    "model": "sonnet",
+    "parent": "dir-art-director",
+    "can_modify": [
+      "knowledge_base/assets_visual/rigging/"
+    ]
+  },
+  {
+    "name": "viz-sound-designer",
+    "description": "Usa questo agente per effetti sonori (SFX) e integrazione audio nel gioco.",
+    "tools": "Read, Write, Edit, Grep, Glob",
+    "model": "sonnet",
+    "parent": "dir-art-director",
+    "can_modify": [
+      "knowledge_base/assets_audio/sfx/"
+    ]
+  },
+  {
+    "name": "viz-technical-artist",
+    "description": "Usa questo agente per l'integrazione tecnica di asset visivi nel motore di gioco.",
+    "tools": "Read, Write, Edit, Grep, Glob",
+    "model": "sonnet",
+    "parent": "dir-art-director",
+    "can_modify": [
+      "knowledge_base/assets_visual/integration_notes.md"
+    ]
+  },
+  {
+    "name": "viz-texture-artist",
+    "description": "Usa questo agente per texturing di asset 3D.",
+    "tools": "Read, Write, Edit, Grep, Glob",
+    "model": "sonnet",
+    "parent": "dir-art-director",
+    "can_modify": [
+      "knowledge_base/assets_visual/textures/"
+    ]
+  },
+  {
+    "name": "viz-ui-ux-artist",
+    "description": "Usa questo agente per animazioni UI e visual design dell'interfaccia.",
+    "tools": "Read, Write, Edit, Grep, Glob",
+    "model": "sonnet",
+    "parent": "dir-art-director",
+    "can_modify": [
+      "knowledge_base/assets_visual/ui/"
+    ]
+  },
+  {
+    "name": "viz-vfx-artist",
+    "description": "Usa questo agente per effetti visivi (VFX).",
+    "tools": "Read, Write, Edit, Grep, Glob",
+    "model": "sonnet",
+    "parent": "dir-art-director",
+    "can_modify": [
+      "knowledge_base/assets_visual/vfx/"
+    ]
+  }
+]
