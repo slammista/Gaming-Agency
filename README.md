@@ -45,7 +45,7 @@ Prima di iniziare, assicurati di avere:
 
 - **Node.js 18 o superiore** — verifica con `node --version`. Se non ce l'hai, scaricalo da [nodejs.org](https://nodejs.org).
 - **Git** — verifica con `git --version`. Di solito è già installato su Mac e Linux. Su Windows usa [git-scm.com](https://git-scm.com).
-- **Un account Anthropic** con piano **Pro, Max o Team** (gli agenti usano Sonnet e Haiku, non disponibili sul piano Free).
+- **Un account Anthropic** — il piano Free funziona, ma è consigliato il piano **Pro** per usare Claude Code in modo continuativo nel terminale (limiti di utilizzo più alti e accesso a Sonnet senza interruzioni).
 
 ---
 
@@ -88,32 +88,71 @@ Al primo avvio Claude Code ti chiederà di autenticarti. Segui le istruzioni a s
 
 ---
 
-### Passo 3 — Clona la repository
+### Passo 3 — Porta il sistema nel tuo progetto
 
-In una nuova finestra del terminale (o digita `/exit` per uscire da Claude Code prima):
+Game Studio OS non va usato direttamente come repository condivisa: va integrato **nel tuo progetto**, che avrà la sua repo GitHub indipendente con la sua Knowledge Base.
 
-```bash
-git clone https://github.com/slammista/Gaming-Agency.git
-cd Gaming-Agency
-```
-
-Verifica che la cartella contenga i file giusti:
-
-```bash
-ls -la
-```
-
-Dovresti vedere: `.claude/`, `CLAUDE.md`, `README.md`, `knowledge_base/`, `logs/`, `roles.json`.
+Hai due strade:
 
 ---
 
-### Passo 4 — Avvia Claude Code nella cartella del progetto
+#### Opzione A — Usa questa repo come template (consigliato per iniziare da zero)
+
+Vai su [github.com/slammista/Gaming-Agency](https://github.com/slammista/Gaming-Agency) e clicca **"Use this template" → "Create a new repository"**.
+
+GitHub creerà una copia identica nella tua repository personale (`tuousername/NomeDelTuoGioco`), completamente scollegata da questa. Da quel momento lavori in autonomia sulla tua copia.
+
+Poi clona la tua nuova repo in locale:
+
+```bash
+git clone https://github.com/tuousername/NomeDelTuoGioco.git
+cd NomeDelTuoGioco
+```
+
+---
+
+#### Opzione B — Integra gli agenti in un progetto già esistente
+
+Se hai già una cartella/repo con il tuo progetto videoludico, puoi copiare solo i file necessari del sistema:
+
+```bash
+# Clona temporaneamente questa repo in una cartella separata
+git clone https://github.com/slammista/Gaming-Agency.git /tmp/game-studio-os
+
+# Entra nella cartella del TUO progetto
+cd /path/al/tuo/progetto
+
+# Copia i file del sistema
+cp -r /tmp/game-studio-os/.claude .
+cp /tmp/game-studio-os/CLAUDE.md .
+cp -r /tmp/game-studio-os/knowledge_base .
+cp -r /tmp/game-studio-os/logs .
+cp /tmp/game-studio-os/roles.json .
+cp -r /tmp/game-studio-os/scripts .
+
+# Rimuovi la repo temporanea
+rm -rf /tmp/game-studio-os
+```
+
+Aggiungi e committa tutto nel tuo progetto:
+
+```bash
+git add .
+git commit -m "Add Game Studio OS multi-agent system"
+git push
+```
+
+> La cartella `knowledge_base/` parte vuota — si popola man mano che gli agenti lavorano. Non condividerai mai i contenuti con altri utenti di questo template.
+
+---
+
+### Passo 4 — Avvia Claude Code nella cartella del tuo progetto
 
 ```bash
 claude
 ```
 
-**Importante:** il comando va eseguito **dentro** la cartella `Gaming-Agency`. Claude Code legge automaticamente:
+**Importante:** il comando va eseguito **dentro** la cartella del tuo progetto. Claude Code legge automaticamente:
 
 - `CLAUDE.md` — la costituzione del progetto (regole, architettura, modalità operativa)
 - `.claude/agents/*.md` — tutti i 53 agenti specializzati
